@@ -56,7 +56,7 @@ public class Conta {
    }
 
 
-    public void sacar(double valor){
+    public synchronized void sacar(double valor){
       if(this.saldo + this.limite > 0){
          /* if(valor < this.saldo){
               this.saldo -= valor;
@@ -74,7 +74,7 @@ public class Conta {
       }
     }
 
-    public void depositar(double valor){
+    public synchronized void depositar(double valor){
         this.saldo += valor;
         this.movimentacoes.add(new Movimentacao("Deposito ", valor, Movimentacao.TipoMovimento.DEBITO));
 

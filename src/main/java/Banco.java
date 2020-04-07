@@ -31,11 +31,14 @@ public class Banco {
        for (Conta conta: this.contas.values()) conta.render();
    }
 
-   public synchronized void depositar(int conta, double valor){
+   public void depositar(int conta, double valor){
 
        if(contas.containsKey(conta) && valor > 0) {
 
-        this.contas.get(conta).depositar(valor);
+           final var c = this.contas.get(conta);
+           synchronized (c){
+               c.depositar(valor);
+           }
        }else if(valor <= 0 ){
            throw new IllegalArgumentException("Não é possível depositar pois o valor: " + conta + " é menor que zero");
        } else {
@@ -46,11 +49,13 @@ public class Banco {
 
    }
 
-   public synchronized void sacar(int conta, double valor){
+   public void sacar(int conta, double valor){
 
        if(contas.containsKey(conta) && valor <= this.contas.get(conta).getSaldo() + this.contas.get(conta).getLimite()){
-
-           this.contas.get(conta).sacar(valor);
+           final var c =  this.contas.get(conta);
+           synchronized (c){
+               c.sacar(valor);
+           }
        }else if(valor > this.contas.get(conta).getSaldo() + this.contas.get(conta).getLimite()){
            throw new IllegalArgumentException("O valor: " + valor + " é maior que o limite");
        } else {
