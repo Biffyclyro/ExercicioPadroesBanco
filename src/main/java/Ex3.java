@@ -2,15 +2,30 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
-public class Ex2 {
+public class Ex3 {
     public static void main(String[] args) {
 
         System.out.println("HashMap:");
         final var banco = new Banco("Novo Banco Modernoso", new HashMap<>());
+        CriadorDeContas.criarConta(banco.getContas());
+        CriadorDeContas.percorrerContas(banco.getContas());
+        CriadorDeContas.getTodas(banco.getContas());
+        System.out.println("");
+
         System.out.println("TreeMap:");
         final var banco2 = new Banco("Novo Menos Modernoso", new TreeMap<>());
+        CriadorDeContas.criarConta(banco2.getContas());
+        CriadorDeContas.percorrerContas(banco2.getContas());
+        CriadorDeContas.getTodas(banco2.getContas());
+        System.out.println("");
+
+
         System.out.println("LinkedHashMap:");
         final var banco3 = new Banco("Novo Nada Modernoso", new LinkedHashMap<>());
+        CriadorDeContas.criarConta(banco3.getContas());
+        CriadorDeContas.percorrerContas(banco3.getContas());
+        CriadorDeContas.getTodas(banco3.getContas());
+        System.out.println("");
 
 
 
@@ -40,7 +55,7 @@ public class Ex2 {
         banco.tirarEstrato(1);
         banco.tirarEstrato(2);
         banco.tirarEstrato(3);
-        banco.tirarEstrato(4)*/;
+        banco.tirarEstrato(4); */
 
 
     }
