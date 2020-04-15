@@ -52,10 +52,10 @@ public class Ex3 {
 
         banco.excluirConta(5);
 
-        banco.tirarEstrato(1);
-        banco.tirarEstrato(2);
-        banco.tirarEstrato(3);
-        banco.tirarEstrato(4); */
+        banco.tirarExtrato(1);
+        banco.tirarExtrato(2);
+        banco.tirarExtrato(3);
+        banco.tirarExtrato(4); */
 
 
     }

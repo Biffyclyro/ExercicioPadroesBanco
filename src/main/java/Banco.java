@@ -72,7 +72,7 @@ public class Banco {
         para.depositar(valor);
    }
 
-   public void tirarEstrato(int numero){
+   public void tirarEXtrato(int numero){
         final var conta = this.contas.get(numero);
 
         if(conta != null){

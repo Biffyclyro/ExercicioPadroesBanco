@@ -46,7 +46,7 @@ public class Conta {
         return tipo;
     }
 
-    public void tirarEstrato(){
+    public void tirarExtrato(){
         for(Movimentacao movimentacao: movimentacoes){
             System.out.println(movimentacao.getDescricao() +
                     "R$ " + movimentacao.getValor() +
