@@ -4,9 +4,10 @@ import java.util.Random;
 public class CriadorDeContas {
     private static final int MAX = 10000;
 
-    public static void criarConta(Map<Integer, Conta> contas){
+    public static void criarConta(Map<Integer, Conta> contas) {
         final var inicio = System.nanoTime();
-        for(int i = MAX; i > 0; i--){
+
+        for (int i = MAX; i > 0; i--) {
             final var aleatorio = new Random();
             final var conta = new Conta(i, aleatorio.nextBoolean(),
                     aleatorio.nextDouble(),
@@ -21,10 +22,12 @@ public class CriadorDeContas {
 
     }
 
-    public static void percorrerContas(Map<Integer, Conta> contas){
+    public static void percorrerContas(Map<Integer, Conta> contas) {
 
         final var inicio = System.nanoTime();
-        contas.forEach((k, v) ->{});
+
+        contas.forEach((k, v) -> {
+        });
 
         final var fim = System.nanoTime();
 
@@ -32,10 +35,10 @@ public class CriadorDeContas {
 
     }
 
-    public static void getTodas(Map<Integer, Conta> contas){
+    public static void getTodas(Map<Integer, Conta> contas) {
 
         final var inicio = System.nanoTime();
-        for ( int i = 0; i < MAX; i++){
+        for (int i = 0; i < MAX; i++) {
             contas.get(i);
         }
 

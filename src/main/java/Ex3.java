@@ -12,6 +12,7 @@ public class Ex3 {
         CriadorDeContas.getTodas(banco.getContas());
         System.out.println("");
 
+
         System.out.println("TreeMap:");
         final var banco2 = new Banco("Novo Menos Modernoso", new TreeMap<>());
         CriadorDeContas.criarConta(banco2.getContas());
