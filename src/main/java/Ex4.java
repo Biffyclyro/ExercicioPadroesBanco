@@ -3,7 +3,7 @@ import java.util.HashMap;
 public class Ex4 {
     public static void main(String[] args) {
 
-        final var banco = new Banco("Novo Banco Modernoso", new HashMap<>());
+       /* final var banco = new BancoConcrete("Novo Banco Modernoso", new HashMap<>());
 
         try {
             banco.depositar(1, 20);
@@ -28,7 +28,7 @@ public class Ex4 {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
+*/
 
     }
 }

@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Conta {
-    private final int numero;
+public class Conta implements Prototype<Conta>{
+    private int numero;
     private double saldo;
     private final boolean especial;
     private double limite;
@@ -15,6 +15,16 @@ public class Conta {
         this.limite = limite;
         this.tipo = tipo;
     }
+
+    private Conta(Conta copia) {
+        this.numero = copia.numero + 1;
+        this.especial = copia.especial;
+        this.limite = copia.limite;
+        this.tipo = copia.tipo;
+    }
+
+
+
 
     public enum Tipo {
         POUPANCA,
@@ -101,4 +111,10 @@ public class Conta {
 
     }
 
+
+
+    @Override
+    public Conta clone() {
+        return new Conta(this);
+    }
 }

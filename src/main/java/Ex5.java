@@ -4,8 +4,8 @@ public class Ex5 {
     public static void main(String[] args) {
 
 
-        final var banco = new Banco("Novo Banco Modernoso", new HashMap<>());
-        final var banco2 = new Banco("Novo Banco Mao Meno", new HashMap<>());
+       /* final var banco = new BancoConcrete("Novo Banco Modernoso", new HashMap<>());
+        final var banco2 = new BancoConcrete("Novo Banco Mao Meno", new HashMap<>());
 
         banco.createConta(1, false, 1000, Conta.Tipo.CONTA_CORRENTE);
 
@@ -26,7 +26,7 @@ public class Ex5 {
         tetadorThread(teste, teste2, teste3, teste4);
 
         System.out.println(banco2.getContas().size());
-
+*/
 
     }
 
@@ -49,18 +49,18 @@ public class Ex5 {
     }
 
     public static class TesteCriacaoExclusao implements Runnable {
-        private final Banco banco;
+        private final BancoConcrete bancoConcrete;
 
-        public TesteCriacaoExclusao(Banco banco) {
-            this.banco = banco;
+        public TesteCriacaoExclusao(BancoConcrete bancoConcrete) {
+            this.bancoConcrete = bancoConcrete;
         }
 
         @Override
         public void run() {
             for (int i = 0; i <= 1000; i++) {
 
-                banco.createConta(1, false, 1000, Conta.Tipo.CONTA_CORRENTE);
-                banco.excluirConta(1);
+                bancoConcrete.createConta(new Conta(1, false, 1000, Conta.Tipo.CONTA_CORRENTE) );
+                bancoConcrete.excluirConta(1);
 
             }
         }
@@ -68,18 +68,18 @@ public class Ex5 {
 
 
     public static class Teste implements Runnable {
-        private final Banco banco;
+        private final BancoConcrete bancoConcrete;
 
-        public Teste(Banco banco) {
-            this.banco = banco;
+        public Teste(BancoConcrete bancoConcrete) {
+            this.bancoConcrete = bancoConcrete;
         }
 
         @Override
         public void run() {
             for (int i = 0; i <= 1000; i++) {
 
-                this.banco.getContas().get(1).depositar(1);
-                this.banco.getContas().get(1).sacar(1);
+                this.bancoConcrete.getContas().get(1).depositar(1);
+                this.bancoConcrete.getContas().get(1).sacar(1);
             }
 
         }

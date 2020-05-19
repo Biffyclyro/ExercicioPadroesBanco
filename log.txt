@@ -1,0 +1,3 @@
+Criada conta número: 1
+Depositado: R$100.0 na conta: 1
+Sacou: R$50.0 da conta: 1
