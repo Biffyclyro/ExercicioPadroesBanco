@@ -29,7 +29,7 @@ public class ProxyBanco implements InvocationHandler {
 
         this.fileWriter.flush();
 
-        printWriter.println(method.getName() + " levou: " + (fim - inicio) + " milisegudos");
+        printWriter.println("Metodo: " + method.getName() + " levou: " + (fim - inicio) + " milisegudos");
 
         return retornoMetodo;
     }
