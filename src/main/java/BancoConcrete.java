@@ -1,14 +1,12 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class BancoConcrete implements Banco {
+public class BancoConcrete implements Banco, Subscriber {
     private String nome;
-    private Map<Integer, Conta> contas = new HashMap<>();
+    private final Map<Integer, Conta> contas = new HashMap<>();
     private static Banco banco;
-
-    private BancoConcrete() {
-
-    }
 
 
     @Override
@@ -17,6 +15,8 @@ public class BancoConcrete implements Banco {
         if (!contas.containsKey(conta.getNumero())) {
 
             this.contas.put(conta.getNumero(), conta);
+
+            conta.subscribe(this);
         }
 
     }
@@ -27,6 +27,7 @@ public class BancoConcrete implements Banco {
 
         if (contas.containsKey(numero)) {
             this.contas.remove(numero);
+
         }
 
     }
@@ -100,5 +101,14 @@ public class BancoConcrete implements Banco {
         }
 
         return banco;
+    }
+
+    @Override
+    public void update(Conta c) {
+        System.out.println(c.getSaldo());
+        if( c.getSaldo() < 0 ) Serasa.addConta(c);
+        else {
+            if( Serasa.isEndividado(c) ) Serasa.removeConta(c);
+        }
     }
 }

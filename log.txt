@@ -1,2 +1,3 @@
-Metodo: createConta levou: 113137 milisegudos
-Metodo: depositar levou: 1184653 milisegudos
+Metodo: createConta levou: 150743 milisegudos
+Metodo: depositar levou: 7699773 milisegudos
+Metodo: sacar levou: 189073 milisegudos

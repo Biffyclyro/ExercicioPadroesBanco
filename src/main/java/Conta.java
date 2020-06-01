@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Conta implements Prototype<Conta>{
+public class Conta implements Prototype<Conta> {
     private int numero;
     private double saldo;
     private final boolean especial;
     private double limite;
     private final List<Movimentacao> movimentacoes = new ArrayList<>();
     private final Tipo tipo;
+    private final List<Subscriber> subscribers = new ArrayList<>();
 
     public Conta(int numero, boolean especial, double limite, Tipo tipo) {
         this.numero = numero;
@@ -22,8 +23,6 @@ public class Conta implements Prototype<Conta>{
         this.limite = copia.limite;
         this.tipo = copia.tipo;
     }
-
-
 
 
     public enum Tipo {
@@ -72,12 +71,17 @@ public class Conta implements Prototype<Conta>{
         } else {
             System.out.println("Saldo/Limite insuficiente");
         }
+
+
+        this.notifySubscribes();
     }
 
     public synchronized void depositar(double valor) {
 
         this.saldo += valor;
         this.movimentacoes.add(new Movimentacao("Deposito ", valor, Movimentacao.TipoMovimento.DEBITO));
+
+        this.notifySubscribes();
 
     }
 
@@ -109,9 +113,23 @@ public class Conta implements Prototype<Conta>{
                 break;
         }
 
+        this.notifySubscribes();
+
     }
 
 
+    //parte de ser publisher
+    private void notifySubscribes() {
+        this.subscribers.forEach( s -> s.update(this));
+    }
+
+    public void subscribe(Subscriber s){
+       this.subscribers.add(s);
+    }
+
+    public void unsubscribe(Subscriber s){
+        this.subscribers.remove(s);
+    }
 
     @Override
     public Conta clone() {
